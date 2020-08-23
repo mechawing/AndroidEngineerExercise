@@ -5,8 +5,12 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageButton
+import android.accounts.AccountManager
 
 class MainActivity : AppCompatActivity() {
+
+    val accountList: AccountManager = AccountManager.get(this)
+    val options = Bundle()
 
     val editTxtEmail: EditText = findViewById<EditText>(R.id.emailInput)
     val editTxtPassword: EditText = findViewById<EditText>(R.id.enterPassword)
@@ -23,9 +27,8 @@ class MainActivity : AppCompatActivity() {
         val confirmPassword = editTxtConfirmPassword.text.toString()
 
         nextButton.setOnClickListener() {
-            setEmailAddress(emailAddress)
-            setPassword(password)
-            confirmPassword(confirmPassword)
+            if (password == confirmPassword)
+                accountList.addAccount(emailAddress, password)
         }
     }
 
@@ -33,21 +36,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.second_activity)
     }
 
-    fun setEmailAddress(view: String) {
 
-    }
-
-    fun setPassword(view: String) {
-
-    }
-
-    fun confirmPassword(view: String) {
-
-    }
 
     fun goBack(view: View) {
         setContentView(R.layout.activity_main)
     }
 
+
+}
+
+private fun Any.addAccount(emailAddress: String, password: String) {
 
 }
