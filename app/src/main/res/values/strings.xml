@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Android Engineer Exercise</string>
+    <string name="front_text">Hello app!</string>
+</resources>
